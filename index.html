@@ -133,12 +133,17 @@
     </style>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&amp;display=swap" rel="stylesheet"/></head>
 <body>
+<nav style="text-align:center; padding: 15px; background-color: #1565c0;">
+<a href="#" onclick="showTab('home')" style="color:white; font-weight:bold; margin: 0 10px;">خانه</a>
+<a href="#" onclick="showTab('tariffs')" style="color:white; font-weight:bold; margin: 0 10px;">تعرفه‌ها</a>
+</nav>
+
 <header>
 <h1 class="animated">صفایی الکترونیک<span class="animated">به مدیریت نیکان صفایی و احسان علی‌پور</span></h1>
 <p class="animated">طراحی، تعمیر و ساخت بردهای الکترونیکی با دقت و تخصص</p>
 <p class="slogan animated">«دقت در طراحی، تخصص در تعمیر، اعتماد در نتیجه»</p>
 </header>
-<section>
+<section id="home">
 <h2 class="animated">خدمات ما</h2>
 <ul class="animated">
 <li>تعمیر تخصصی بردهای لوازم خانگی و صنعتی</li>
@@ -168,5 +173,30 @@
 <footer>
     © 2025 صفایی الکترونیک | تمام حقوق محفوظ است
   </footer>
+<script>
+function showTab(tabId) {
+  var sections = document.querySelectorAll('body > section, .tab-content');
+  sections.forEach(section => section.style.display = 'none');
+  var target = document.getElementById(tabId);
+  if (target) {
+    target.style.display = 'block';
+  }
+}
+window.onload = function() {
+  showTab('home');
+};
+</script>
+<div class="tab-content" id="tariffs">
+<section>
+<h2 class="animated">تعرفه خدمات</h2>
+<ul class="animated">
+<li>طراحی برد سفارشی: 500.000 تومان</li>
+<li>تعمیر برد الکترونیکی: 300.000 تومان</li>
+<li>مونتاژ برد SMD و DIP: ,250.000 تومان</li>
+<li>ساخت کیت آموزشی: 350.000 تومان</li>
+<li>طراحی مدار با نرم‌افزار Altium: 700.000 تومان</li>
+</ul>
+</section>
+</div>
 </body>
 </html>
