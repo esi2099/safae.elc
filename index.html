@@ -1,206 +1,345 @@
-
 <!DOCTYPE html>
-
 <html dir="rtl" lang="fa">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="google-site-verification" content="B8lLUxZDNZBSyJx59DhTrTcPTn5grnYyszFb8JhhcZM" />
-<title>صفایی الکترونیک | طراحی و تعمیر برد الکترونیکی</title>
-<meta name="description" content="صفایی الکترونیک،تعمیر و ساخت برد های الکترونیکی.">
-<h1 style ="text-align: center;">safaei elc</h1>
-<style>
-    body {
-      font-family: "Vazirmatn", sans-serif;
-      background-color: #f4f6f8;
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>صفایی الکترونیک | طراحی و تعمیر برد</title>
+  <meta name="description" content="صفایی الکترونیک،تعمیر و ساخت بردهای الکترونیکی." />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <style>
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    body {
+      background: #f0f4f9;
       color: #333;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #1e88e5;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    nav a {
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #0d47a1;
     }
 
     header {
       background: linear-gradient(90deg, #1565c0, #1e88e5);
-      color: white;
+      padding: 40px 20px 60px;
       text-align: center;
-      padding-bottom: 20px;
-    }
-
-    header img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-bottom: 3px solid #1e88e5;
+      color: #fff;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      position: relative;
+      overflow: hidden;
     }
 
     header h1 {
-      font-size: 2.5rem;
-      margin: 20px 0 10px;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+      text-shadow: 0 2px 5px rgb(0 0 0 / 0.3);
+      letter-spacing: 2px;
     }
 
     header span {
-      font-size: 1rem;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      font-weight: 600;
       display: block;
-      margin-top: 5px;
+      margin-top: 8px;
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-
-    .slogan {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      font-weight: 500;
       font-style: italic;
-      margin-bottom: 20px;
-      color: #e3f2fd;
+      text-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
     }
 
     section {
-      max-width: 1000px;
+      max-width: 900px;
+      background: #fff;
       margin: 30px auto;
-      padding: 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 30px 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgb(0 0 0 / 0.06);
+      animation: fadeInUp 0.7s ease forwards;
+      display: none;
+    }
+
+    section.active {
+      display: block;
     }
 
     h2 {
       color: #1565c0;
-      margin-top: 30px;
-      border-bottom: 2px solid #1e88e5;
-      padding-bottom: 5px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 3px solid #1e88e5;
+      padding-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
     ul {
-      line-height: 2;
+      list-style-type: square;
       padding-right: 20px;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 2.2;
+    }
+
+    .price-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 15px;
+    }
+
+    .price-card {
+      background: #e3f2fd;
+      padding: 20px 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+      color: #0d47a1;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .price-card:hover {
+      box-shadow: 0 10px 26px rgb(0 0 0 / 0.2);
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+      color: #1565c0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #1565c0;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0d47a1;
+    }
+
+    .form-message {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .success {
+      background-color: #c8e6c9;
+      color: #256029;
+    }
+
+    .error {
+      background-color: #ffcdd2;
+      color: #c62828;
     }
 
     footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      background-color: #e3f2fd;
-      color: #333;
-      font-size: 0.9rem;
+      margin: 40px 0 20px;
+      color: #888;
     }
 
-    a {
-      color: #1565c0;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .cta {
-      margin-top: 40px;
-      background-color: #e8f0fe;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #1a237e;
-    }
-  
     @keyframes fadeInUp {
-      from {
+      0% {
         opacity: 0;
         transform: translateY(30px);
       }
-      to {
+
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .animated {
-      animation: fadeInUp 1s ease-out both;
-    }
+    @media (max-width: 640px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
-    header h1, header span, header p, .slogan, h2, ul, .cta {
-      opacity: 0;
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.3s;
-    }
+      header h1 {
+        font-size: 2rem;
+      }
 
-    h2 {
-      animation-delay: 0.6s;
+      header p {
+        font-size: 1rem;
+      }
     }
+  </style>
+</head>
 
-    .cta {
-      animation-delay: 0.9s;
-    }
-    </style>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn&amp;display=swap" rel="stylesheet"/></head>
 <body>
-<nav style="text-align:center; padding: 15px; background-color: #1565c0;">
-<a href="#" onclick="showTab('home')" style="color:white; font-weight:bold; margin: 0 10px;">خانه</a>
-<a href="#" onclick="showTab('tariffs')" style="color:white; font-weight:bold; margin: 0 10px;">تعرفه‌ها</a>
-</nav>
+  <nav>
+    <a href="#" class="active" data-target="home">خانه</a>
+    <a href="#" data-target="tariffs">تعرفه‌ها</a>
+    <a href="#" data-target="signup">باشگاه مشتریان</a>
+  </nav>
 
-<header>
-<h1 class="animated">صفایی الکترونیک<span class="animated">به مدیریت نیکان صفایی و احسان علی‌پور</span></h1>
-<p class="animated">طراحی، تعمیر و ساخت بردهای الکترونیکی با دقت و تخصص در صفایی الکترونیک</p>
-<p class="slogan animated">«دقت در طراحی، تخصص در تعمیر، اعتماد در نتیجه»</p>
-</header>
-<section id="home">
-<h2 class="animated">خدمات ما</h2>
-<ul class="animated">
-<li>تعمیر تخصصی بردهای لوازم خانگی و صنعتی در صفایی الکترونیک</li>
-<li>طراحی PCB</li>
-<li>مونتاژ و تست نهایی برد با قطعات DIP و SMD</li>
-<li>ساخت و فروش کیت‌های آموزشی ساده و کاربردی</li>
-<li>همه ی اینها در صفایی الکترونیک</li>
-</ul>
-<h2 class="animated">چرا صفایی الکترونیک؟</h2>
-<ul class="animated">
-<li>۵ سال تجربه‌ی تخصصی در طراحی و تعمیرات برد</li>
-<li>پشتیبانی کامل از پروژه‌های سفارشی</li>
-<li>تحویل سریع و تضمینی</li>
-<li>قیمت‌گذاری منصفانه و مشاوره رایگان</li>
-</ul>
-<div class="cta animated">
-      برای ثبت سفارش، همین حالا تماس بگیرید یا پیام واتساپ ارسال کنید!
+  <header>
+    <h1>صفایی الکترونیک</h1>
+    <span>به مدیریت نیکان صفایی و احسان علی‌پور</span>
+    <p>طراحی، تعمیر و ساخت بردهای الکترونیکی با دقت و تخصص در صفایی الکترونیک</p>
+    <p style="font-style: italic; opacity: 0.8;">«دقت در طراحی، تخصص در تعمیر، اعتماد در نتیجه»</p>
+  </header>
+
+  <section id="home" class="active">
+    <h2>خدمات ما</h2>
+    <ul>
+      <li>🔧 تعمیر تخصصی بردهای صنعتی و خانگی</li>
+      <li>📐 طراحی PCB و مدار سفارشی</li>
+      <li>🧩 مونتاژ قطعات DIP و SMD</li>
+      <li>📦 فروش کیت‌های آموزشی کاربردی</li>
+    </ul>
+  
+    <h2>🌟 چرا صفایی الکترونیک؟</h2>
+    <ul>
+      <li>✅ بیش از ۱۰ سال تجربه تخصصی در طراحی و تعمیر</li>
+      <li>🛠 تضمین کیفیت با استفاده از قطعات اصلی</li>
+      <li>📞 پشتیبانی دائمی و پاسخ‌گویی سریع</li>
+      <li>💬 مشاوره رایگان قبل از شروع پروژه</li>
+    </ul>
+  
+    <div style="background: linear-gradient(90deg, #bbdefb, #e3f2fd); padding: 22px; border-radius: 18px; margin-top: 30px; box-shadow: 0 8px 18px rgba(0,0,0,0.1); text-align: center;">
+      <p style="font-size: 1.2rem; font-weight: bold; color: #0d47a1;">
+        با صفایی الکترونیک، اطمینان و کیفیت را همزمان تجربه کنید! 🚀
+      </p>
     </div>
-<h2 class="animated">تماس با ما</h2>
-<p>
-      شماره تماس: <a href="tel:09373081357">09373081357</a><br/>
-      واتساپ: <a href="https://wa.me/989373081357" target="_blank">ارسال پیام در واتساپ</a><br/>
-      ایمیل: <a href="mailto:nikansafaei2011@gmail.com">nikansafaei2011@gmail.com</a><br/>
-  شماره تماس دوم: <a href="tel:09339033884">09339033884</a><br/>
-  ایمیل دوم: <a href="mailto:esi.alipour2099@gmail.com">esi.alipour2099@gmail.com</a>
-</p>
-</section>
-<footer>
+  
+    <h2>📞 تماس با ما</h2>
+    <ul>
+      <li>📱 شماره تماس: <strong>09373081357</strong></li>
+      <li>📱 شماره تماس دوم : <strong>09339033884</strong></li>
+    </ul>
+  </section>
+  
+
+  <section id="tariffs">
+    <h2>💰 تعرفه خدمات</h2>
+    <div class="price-list">
+      <div class="price-card">طراحی برد سفارشی<br />۵۰۰,۰۰۰ تومان</div>
+      <div class="price-card">تعمیر برد الکترونیکی<br />۳۰۰,۰۰۰ تومان</div>
+      <div class="price-card">مونتاژ برد SMD و DIP<br />۲۵۰,۰۰۰ تومان</div>
+      <div class="price-card">ساخت کیت آموزشی<br />۳۵۰,۰۰۰ تومان</div>
+      <div class="price-card">طراحی با Altium<br />۷۰۰,۰۰۰ تومان</div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <h2>🎉 عضویت در باشگاه مشتریان</h2>
+    <form id="signup-form" action="https://formspree.io/f/xwpbjaoe" method="POST">
+      <label for="name">نام و نام خانوادگی:</label>
+      <input type="text" id="name" name="name" placeholder="مثلاً احسان علی‌پور" required />
+
+      <label for="phone">شماره موبایل:</label>
+      <input type="tel" id="phone" name="phone" pattern="09[0-9]{9}" placeholder="مثلاً 09123456789" required />
+
+      <button type="submit">ثبت نام</button>
+      <div id="signup-message" class="form-message"></div>
+    </form>
+  </section>
+
+  <footer>
     © 2025 صفایی الکترونیک | تمام حقوق محفوظ است
   </footer>
-<script>
-function showTab(tabId) {
-  var sections = document.querySelectorAll('body > section, .tab-content');
-  sections.forEach(section => section.style.display = 'none');
-  var target = document.getElementById(tabId);
-  if (target) {
-    target.style.display = 'block';
-  }
-}
-window.onload = function() {
-  showTab('home');
-};
-</script>
-<div class="tab-content" id="tariffs">
-<section>
-<h2 class="animated">تعرفه خدمات</h2>
-<ul class="animated">
-<li>طراحی برد سفارشی: 500.000 تومان</li>
-<li>تعمیر برد الکترونیکی: 300.000 تومان</li>
-<li>مونتاژ برد SMD و DIP: ,250.000 تومان</li>
-<li>ساخت کیت آموزشی: 350.000 تومان</li>
-<li>طراحی مدار با نرم‌افزار Altium: 700.000 تومان</li>
-</ul>
-</section>
-</div>
+
+  <script>
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = link.getAttribute("data-target");
+        document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+        document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+        document.getElementById(target).classList.add("active");
+        link.classList.add("active");
+      });
+    });
+
+    const signupForm = document.getElementById("signup-form");
+    const signupMessage = document.getElementById("signup-message");
+
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      signupMessage.style.display = "none";
+
+      const name = e.target.name.value.trim();
+      const formData = new FormData(signupForm);
+
+      try {
+        const response = await fetch(signupForm.action, {
+          method: "POST",
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        signupMessage.style.display = "block";
+        if (response.ok) {
+          signupMessage.textContent = `سلام ${name} عزیز 🌟 به باشگاه مشتریان صفایی الکترونیک خوش آمدید!`;
+          signupMessage.className = "form-message success";
+          signupForm.reset();
+        } else {
+          signupMessage.textContent = "ثبت‌نام انجام نشد، لطفاً دوباره تلاش کنید.";
+          signupMessage.className = "form-message error";
+        }
+      } catch (err) {
+        signupMessage.textContent = "خطا در اتصال! لطفاً دوباره امتحان کنید.";
+        signupMessage.className = "form-message error";
+        signupMessage.style.display = "block";
+      }
+    });
+  </script>
 </body>
+
 </html>
